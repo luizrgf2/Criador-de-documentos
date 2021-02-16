@@ -52,4 +52,4 @@ junto um json com as seguintes infomaçoes:\
 ![](./get.png) \
 A rota http://localhost:400/docclient/"hashcode do documento"\
  Basta apenas passar junto da url o hash do documento que irá retornar
-apenas as um documento pdf com as assinaturas para o cliente.
+apenas um documento pdf com as assinaturas para o cliente.
