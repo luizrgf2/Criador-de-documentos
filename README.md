@@ -1,7 +1,7 @@
 Criador de documentos.
 ======================
 
-![](./Sem%20título.png)
+![](./images/Sem%20título.png)
 
 A rota http://localhost:400/contrato, ela irá gerar o contrato, deve ir
 junto um json com as seguintes infomaçoes:\
@@ -30,7 +30,7 @@ junto um json com as seguintes infomaçoes:\
  }\
  Isso irá retornar o documento em pdf do contrato.
 
-![](./Sem%20tw.jpg)
+![](./images/Sem%20tw.jpg)
 
 A rota http://localhost:400/contrato, ela irá gerar o contrato, deve ir
 junto um json com as seguintes infomaçoes:\
@@ -49,7 +49,7 @@ junto um json com as seguintes infomaçoes:\
  }\
  Isso irá retornar o documento em pdf da franquia.
 
-![](./get.png) \
+![](./images/get.png) \
 A rota http://localhost:400/docclient/"hashcode do documento"\
  Basta apenas passar junto da url o hash do documento que irá retornar
 apenas um documento pdf com as assinaturas para o cliente.
