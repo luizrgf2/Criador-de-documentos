@@ -14,6 +14,7 @@ class Doc:
 
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
 
         self.driver = webdriver.Chrome(executable_path=self.path_chromedriver(),chrome_options=options)
     def barra(self):
@@ -347,8 +348,6 @@ class Doc:
         os.system('node index3.js')
 
         file_reader = open('doccliente.pdf','rb').read()
-        os.remove('doccliente.pdf')
-
 
         if platform.system() == "Linux":
 
