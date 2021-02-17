@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.post('/contrato',async (req,res)=>{
 
 
-    try{
         nome= req.body.nome
         cidade= req.body.cidade
         estado= req.body.estado
@@ -42,11 +41,8 @@ app.post('/contrato',async (req,res)=>{
         res.contentType('application/pdf')
         res.send(file)
 
-    }catch{
 
-        res.status(500).send('Algum erro aconteceu!')
 
-    }
 
     
 
