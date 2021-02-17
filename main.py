@@ -2,7 +2,6 @@ from selenium import webdriver
 import platform
 import  os
 from time import sleep as tm
-import undetected_chromedriver
 from datetime import datetime
 
 
@@ -10,7 +9,6 @@ class Doc:
 
     def __init__(self):
         
-        undetected_chromedriver.install()
 
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
