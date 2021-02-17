@@ -81,7 +81,7 @@ def pegar_doc_cliente(id):
             
     return send_file(file_reader,attachment_filename='doccliente.pdf')
 
-app.run(port=400)
+app.run(port=7000)
 
 
 
