@@ -10,11 +10,11 @@ class Doc:
 
     def __init__(self):
         
-        undetected_chromedriver.install()
 
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
+        options.add_argument('--disable-gpu')
 
         self.driver = webdriver.Chrome(executable_path=self.path_chromedriver(),chrome_options=options)
     def barra(self):
@@ -355,4 +355,4 @@ class Doc:
         else:
             open(os.getcwd()+f'\\pdfs\\{hashcode}.pdf','wb').write(file_reader)
 
-#Doc().edit_html('wqdadaw','123213213213','luiz felipe','12343242','exemplo.gmail.com','34997625653','Alemar rodrigues da cunha','342','Tiao coco','Patos de minas','Minas gerias','wadawdwa',45,'adaw',42343,'efs',34,'23423','sefsefse','24234234','Patos de minas')
+Doc().edit_html('wqdadaw','123213213213','luiz felipe','12343242','exemplo.gmail.com','34997625653','Alemar rodrigues da cunha','342','Tiao coco','Patos de minas','Minas gerias','wadawdwa',45,'adaw',42343,'efs',34,'23423','sefsefse','24234234','Patos de minas')
