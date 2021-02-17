@@ -103,6 +103,6 @@ app.get(`/docclient/:hashcode`,(req,res)=>{
 
 let port = 7000
 
-app.listen(port,()=>{
+app.listen(port,'127.0.0.1',()=>{
     console.log('Conectado.... aberto na porta '+port.toString())
 })
