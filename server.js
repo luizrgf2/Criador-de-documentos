@@ -8,7 +8,7 @@ const fs = require('fs')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
-app.post('/contrato',(req,res)=>{
+app.post('/contrato',async (req,res)=>{
 
 
     try{
@@ -35,7 +35,7 @@ app.post('/contrato',(req,res)=>{
         extenso3 = req.body.extenso3
 
 
-        mod.modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,porcentagem1,extenso1,porcentagem2,extenso2,porcentagem3,extenso3,numero,ip,local,hashcode)
+        await mod.modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,porcentagem1,extenso1,porcentagem2,extenso2,porcentagem3,extenso3,numero,ip,local,hashcode)
 
 
         let file = fs.readFileSync('./contrato.pdf')
@@ -51,7 +51,7 @@ app.post('/contrato',(req,res)=>{
     
 
 })
-app.post('/franquia',(req,res)=>{
+app.post('/franquia',async (req,res)=>{
 
 
     try{
@@ -70,7 +70,7 @@ app.post('/franquia',(req,res)=>{
 
 
 
-        mod.modify_html_another(cnpj,nome_empresa,rua,rua,nome,cpf,bairro,cidade,phone,estado,cep,email)
+        await mod.modify_html_another(cnpj,nome_empresa,rua,rua,nome,cpf,bairro,cidade,phone,estado,cep,email)
 
 
         let file = fs.readFileSync('./franquia.pdf')
