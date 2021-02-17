@@ -26,6 +26,7 @@ data ={
 }
 
 
-response = requests.post('http://localhost:400/contrato',data=data)
+
+response = requests.post('http://localhost:400/contrato',json=data)
 
 print(response.status_code)
