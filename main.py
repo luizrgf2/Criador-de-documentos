@@ -15,11 +15,7 @@ class Doc:
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-gpu')
-        options.add_argument('--disable-impl-side-painting')
-        options.add_argument('--disable-gpu-sandbox')
-        options.add_argument('--disable-accelerated-2d-canvas')
-        options.add_argument('--disable-accelerated-jpeg-decoding')
-        options.add_argument('--test-type=ui')
+        options.add_argument('--disable-dev-shm-usage')
 
         self.driver = webdriver.Chrome(executable_path=self.path_chromedriver(),chrome_options=options)
     def barra(self):
