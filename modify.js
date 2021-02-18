@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer')
-
+const data_time = require('date-and-time')
 
 
 async function start(){
@@ -17,7 +17,10 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
     let page = await browser.newPage()
     await page.goto('file://'+__dirname+'/html/docbase.html')
 
-    
+    const data = require('date-and-time')
+    const now = new Date()
+
+    const data_final = data.format(now,'DD/MM/YYYY HH:mm')
     
     
     
@@ -116,7 +119,7 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         document.getElementsByClassName('t m0 x1b h5 y1d1 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
     },nome,cnpj,nome_empresa,numero_empresa,rua,nome,cpf,bairro,cidade,phone,estado,cep)
     
-    await page.evaluate((nome,cpf,ip,loc,hashcode,email,cidade,estado)=>{
+    await page.evaluate((nome,cpf,ip,loc,hashcode,email,cidade,estado,data_final)=>{
         
         
         let pegar_nome = nome=>{
@@ -160,15 +163,14 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         // data atual para inserir no documento
         
 
-        const data_time = require('date-and-time')
+        
+
 
 
         
-        let data = new Date()
-        
 
         
-        let data_final = data_time.format(data,'DD/MM/YYYY HH:mm')
+        
         
 
         //assinatura ressarce
@@ -270,13 +272,13 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         contratante2 = '068.243.889-80                             '+data_final
         document.getElementsByClassName('t m0 xa h11 y23b ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
-    },nome,cpf,ip,loc,hashcode,email,cidade,estado)
+    },nome,cpf,ip,loc,hashcode,email,cidade,estado,data_final)
     
     await page.pdf({ path: 'contrato.pdf', format: 'A4' });
     
     await page.goto('file://'+__dirname+'/html/Doccliente.html')
 
-    await page.evaluate((nome,email,cpf,ip,local,hashcode,cidade,estado)=>{
+    await page.evaluate((nome,email,cpf,ip,local,hashcode,cidade,estado,data_final)=>{
         
         let pegar_nome = nome=>{
             
@@ -303,16 +305,6 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         let hashfinal = ' '.repeat(hashcode.length-2)+hashcode
         document.getElementsByClassName('t m0 xa h3 y1a ff2 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
 
-
-        const data_time = require('date-and-time')
-
-
-        
-        let data = new Date()
-        
-
-        
-        let data_final = data_time.format(data,'DD/MM/YYYY HH:mm')
 
         let ass1 = data_final+' Willian Rafael Barreto Lohn criou este documento.(E-mail:willian.r.lohn@gmail.com, '
         document.getElementsByClassName('t m0 xb h6 y20 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
@@ -353,7 +345,7 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         document.getElementsByClassName('t m0 x3 h3 y10 ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
 
-    },nome,email,cpf,ip,loc,hashcode,cidade,estado)
+    },nome,email,cpf,ip,loc,hashcode,cidade,estado,data_final)
     
     
     await page.pdf({path:'./pdfs/'+hashcode+'.pdf',format:'a4'})
@@ -365,6 +357,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
 
 async function modify_html_another(cnpj,nome_empresa,numero_empresa,rua,nome,cpf,bairro,cidade,phone,estado,cep,email){
     
+
+
+
     let browser = await start()
 
     let page = await browser.newPage()
