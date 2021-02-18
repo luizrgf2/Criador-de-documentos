@@ -16,12 +16,14 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
 
     let page = await browser.newPage()
     await page.goto('file://'+__dirname+'/html/docbase.html')
-
-    const data = require('date-and-time')
+    
+    
     const now = new Date()
 
-    const data_final = data.format(now,'DD/MM/YYYY HH:mm')
+    let data = now.toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'})
+    let hora = now.toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour12:false})
     
+    let data_final  = data+' '+hora.split(':')[0]+':'+hora.split(':')[1]
     
     
     await page.evaluate((nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep)=>{
