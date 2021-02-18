@@ -159,10 +159,16 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
          
         // data atual para inserir no documento
         
+
+        const data_time = require('date-and-time')
+
+
+        
         let data = new Date()
         
+
         
-        let data_final = data.getDay().toString()+'/'+data.getMonth().toString()+'/'+data.getFullYear().toString()+' '+data.getHours().toString()+':'+data.getSeconds().toString()
+        let data_final = data_time.format(data,'DD/MM/YYYY HH:mm')
         
 
         //assinatura ressarce
@@ -298,10 +304,15 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         document.getElementsByClassName('t m0 xa h3 y1a ff2 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
 
 
+        const data_time = require('date-and-time')
+
+
+        
         let data = new Date()
         
+
         
-        let data_final = data.getDay().toString()+'/'+data.getMonth().toString()+'/'+data.getFullYear().toString()+' '+data.getHours().toString()+':'+data.getSeconds().toString()
+        let data_final = data_time.format(data,'DD/MM/YYYY HH:mm')
 
         let ass1 = data_final+' Willian Rafael Barreto Lohn criou este documento.(E-mail:willian.r.lohn@gmail.com, '
         document.getElementsByClassName('t m0 xb h6 y20 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
