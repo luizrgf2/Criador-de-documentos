@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.post('/contrato',async (req,res)=>{
 
 
+        try{
         nome= req.body.nome
         cidade= req.body.cidade
         estado= req.body.estado
@@ -40,6 +41,9 @@ app.post('/contrato',async (req,res)=>{
         let file = fs.readFileSync('./contrato.pdf')
         res.contentType('application/pdf')
         res.send(file)
+        }catch{
+            res.status(500).send('Algum erro aconteceu!')
+        }
 
 
 
@@ -95,8 +99,29 @@ app.get(`/docclient/:hashcode`,(req,res)=>{
     }
 
 })
+app.post('/relatorio',async (req,res)=>{
 
 
+    try{
+        
+        const nome_empresa = req.body.nome_empresa
+        const cnpj = req.body.cnpj
+        const valor1 = req.body.valor1
+        const valor2 = req.body.valor2
+
+        await mod.modify_html_relatorio(nome_empresa,cnpj,valor1,valor2)
+        
+        
+        file = fs.readFileSync('relatorio.pdf')
+        res.contentType('application/pdf')
+        res.send(file)
+    }catch{
+        res.status(500).send('Algum erro aconteceu!')
+    }
+
+
+
+})
 let port = 7000
 
 app.listen(port,'127.0.0.1',()=>{

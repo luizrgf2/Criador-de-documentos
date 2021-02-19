@@ -384,9 +384,33 @@ async function modify_html_another(cnpj,nome_empresa,numero_empresa,rua,nome,cpf
     await page.pdf({path:'franquia.pdf',format:'a4'})
 }
 
+async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
 
+    let browser = await start()
+
+    let page = await browser.newPage()
+    await page.goto('file://'+__dirname+'/html/relatorio.html')
+
+
+    await page.evaluate( (nome_empresa,cnpj,valor_inicio,valor_final)=>
+    {
+
+        document.getElementsByClassName('t m0 xb h4 y29 ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = nome_empresa
+        cnpj_text = 'CNPJ '+cnpj
+        document.getElementsByClassName('t m0 xb h4 y2b ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = cnpj_text
+        text_values = 'Aproximadamente R$ '+valor_inicio+' mil reais a R$ '+valor_final+' mil reais'
+        document.getElementsByClassName('t m0 x11 h6 y2f ff2 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = text_values
+
+
+    },nome_empresa,cnpj,valor1,valor2)
+
+
+    await page.pdf({format:'A4',path:'relatorio.pdf'})
+
+
+}
 
 //modify_html('wwadwadaw','jfflffkfj','wdawdawdwa','wdadadaw','wadawdda','wdwadwa','wdwadwad','awdawdwa','wdwadawdwa','adwadwad','wadwadwa','wadwadaw','wadwadwadwa','wadawdaw','wdwadaw','adawda','dwawa','awdawdwa','awdawdawd','4324234','wdwada','wadwadwadwa')
 
 
-module.exports = {modify_html,modify_html_another}
+module.exports = {modify_html,modify_html_another,modify_html_relatorio}
