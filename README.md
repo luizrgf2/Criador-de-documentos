@@ -59,7 +59,7 @@ apenas um documento pdf com as assinaturas para o cliente.
 
 ![](./images/relatorio.png)
 
-A rota http://localhost:7000/relatorio, ela irá gerar o contrato, deve ir
+A rota http://localhost:7000/relatorio, ela irá gerar o relatorio, deve ir
 junto um json com as seguintes infomaçoes:
     
     {
