@@ -122,7 +122,7 @@ app.post('/relatorio',async (req,res)=>{
 
 
 })
-let port = 7000
+let port = 6000
 
 app.listen(port,'127.0.0.1',()=>{
     console.log('Conectado.... aberto na porta '+port.toString())

@@ -177,11 +177,11 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
 
         //assinatura ressarce
 
-        let ass1 = data_final+' Willian Rafael Barreto Lohn criou este documento.(E-mail:willian.r.lohn@gmail.com, '
+        let ass1 = data_final+' Ressarce criou este documento.(E-mail:contato@ressarce.com.br, '
         document.getElementsByClassName('t m0 x3 h13 y158 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Willian Rafael Barreto Lohn (E-mail:@willian.r.lohn@gmail.com,CPF : 068.243.889-80) '
+        ass1 = data_final+' Ressarce (E-mail:@contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
         document.getElementsByClassName('t m0 x3 h13 y15b ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Willian Rafael Barreto Lohn (E-mail:willian.r.lohn@gmail.com,CPF : 068.243.889-80) '
+        ass1 = data_final+' Ressarce (E-mail:contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
         document.getElementsByClassName('t m0 x3 h13 y15e ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         
         //assinatura do cliente
@@ -232,9 +232,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         //assinatura RESSARCE
         
-        ass1 = data_final+' Willian Rafael Barreto Lohn (E-mail:@willian.r.lohn@gmail.com,CPF : 068.243.889-80) '
+        ass1 = data_final+' Ressarce (E-mail:@contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
         document.getElementsByClassName('t m0 x3 h13 y262 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Willian Rafael Barreto Lohn (E-mail:willian.r.lohn@gmail.com,CPF : 068.243.889-80) '
+        ass1 = data_final+' Ressarce (E-mail:contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
         document.getElementsByClassName('t m0 x3 h13 y265 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         
         //contratante
@@ -308,11 +308,11 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         document.getElementsByClassName('t m0 xa h3 y1a ff2 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
 
 
-        let ass1 = data_final+' Willian Rafael Barreto Lohn criou este documento.(E-mail:willian.r.lohn@gmail.com, '
+        let ass1 = data_final+' Ressarce criou este documento.(E-mail:contato@ressarce.com.br, '
         document.getElementsByClassName('t m0 xb h6 y20 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Willian Rafael Barreto Lohn (E-mail:@willian.r.lohn@gmail.com,CPF : 068.243.889-80) '
+        ass1 = data_final+' Ressarce (E-mail:@contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
         document.getElementsByClassName('t m0 xb h6 y23 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Willian Rafael Barreto Lohn (E-mail:willian.r.lohn@gmail.com,CPF : 068.243.889-80) '
+        ass1 = data_final+' Ressarce (E-mail:contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
         document.getElementsByClassName('t m0 xb h6 y27 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
 
         //assinatura do cliente
