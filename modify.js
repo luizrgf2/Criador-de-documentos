@@ -28,18 +28,18 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
     
     await page.evaluate((nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep)=>{
         
-        document.getElementsByClassName('t m0 x7 h5 y1d ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = nome_empresa //nome empres
-        document.getElementsByClassName('t m0 x7 h5 y20 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = cnpj //cnpj
-        document.getElementsByClassName('t m0 x7 h3 y23 ff2 fs1 fc0 sc0 ls0 ws0')[0].innerText = nome  //nome do dono da empresa
-        document.getElementsByClassName('t m0 x7 h3 y26 ff2 fs1 fc0 sc0 ls0 ws0')[0].innerText = cpf  //cpf
-        document.getElementsByClassName('t m0 x7 h5 y29 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = email  //email
-        document.getElementsByClassName('t m0 x7 h5 y2c ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = phone  //phone
-        document.getElementsByClassName('t m0 x7 h5 y2f ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = rua  //rua
-        document.getElementsByClassName('t m0 x7 h5 y32 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = numero  //numero empresa
-        document.getElementsByClassName('t m0 x7 h5 y35 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = bairro  //bairro
-        document.getElementsByClassName('t m0 x7 h5 y38 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = cidade  //cidade
-        document.getElementsByClassName('t m0 x7 h5 y3b ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = estado  //estado
-        document.getElementsByClassName('t m0 x7 h5 y3e ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = cep  //cep
+        document.getElementsByClassName('t m0 x6 h5 y1d ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = nome_empresa //nome empres
+        document.getElementsByClassName('t m0 x6 h5 y20 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = cnpj //cnpj
+        document.getElementsByClassName('t m0 x6 h3 y23 ff2 fs1 fc0 sc0 ls0 ws0')[0].innerText = nome  //nome do dono da empresa
+        document.getElementsByClassName('t m0 x6 h3 y26 ff2 fs1 fc0 sc0 ls0 ws0')[0].innerText = cpf  //cpf
+        document.getElementsByClassName('t m0 x6 h5 y29 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = email  //email
+        document.getElementsByClassName('t m0 x6 h5 y2c ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = phone  //phone
+        document.getElementsByClassName('t m0 x6 h5 y2f ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = rua  //rua
+        document.getElementsByClassName('t m0 x6 h5 y32 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = numero  //numero empresa
+        document.getElementsByClassName('t m0 x6 h5 y35 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = bairro  //bairro
+        document.getElementsByClassName('t m0 x6 h5 y38 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = cidade  //cidade
+        document.getElementsByClassName('t m0 x6 h5 y3b ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = estado  //estado
+        document.getElementsByClassName('t m0 x6 h5 y3e ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = cep  //cep
         
     },nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep)
     
@@ -64,9 +64,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         
         
-        document.getElementsByClassName('t m0 x3 h5 y173 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line
-        document.getElementsByClassName('t m0 x3 h5 y174 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line2
-        document.getElementsByClassName('t m0 x3 h5 y175 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
+        document.getElementsByClassName('t m0 x3 h5 y16c ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line
+        document.getElementsByClassName('t m0 x3 h5 y16d ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line2
+        document.getElementsByClassName('t m0 x3 h5 y16e ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
     },cnpj,nome)
     
     await page.evaluate((porcent,estenso,porcent2,estenso2,porcent3,estenso3)=>{
@@ -91,9 +91,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         
         
-        document.getElementsByClassName('t m0 x3 h5 y7f ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line
-        document.getElementsByClassName('t m0 x3 h5 y80 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line2
-        document.getElementsByClassName('t m0 x3 h5 y81 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
+        document.getElementsByClassName('t m0 x3 h5 y7e ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line
+        document.getElementsByClassName('t m0 x3 h5 y7f ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line2
+        document.getElementsByClassName('t m0 x3 h5 y80 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
     },porcent,estenso,porcent2,estenso2,porcent3,estenso3)
     
     await page.evaluate((name,cnpj,nome_empresa,numero_empresa,rua,nome,cpf,bairro,cidade,phone,estado,cep)=>{
@@ -116,9 +116,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         
         
-        document.getElementsByClassName('t m0 x1b h5 y1cf ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line
-        document.getElementsByClassName('t m0 x1b h5 y1d0 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line2
-        document.getElementsByClassName('t m0 x1b h5 y1d1 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
+        document.getElementsByClassName('t m0 x3 h5 y16c ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line
+        document.getElementsByClassName('t m0 x3 h5 y16d ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line2
+        document.getElementsByClassName('t m0 x3 h5 y16e ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText =line3
     },nome,cnpj,nome_empresa,numero_empresa,rua,nome,cpf,bairro,cidade,phone,estado,cep)
     
     await page.evaluate((nome,cpf,ip,loc,hashcode,email,cidade,estado,data_final)=>{
@@ -147,14 +147,14 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         
         let hashfinal = ' '.repeat(hashcode.length-2)+hashcode
-        document.getElementsByClassName('t m0 x12 h11 y152 ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
-        document.getElementsByClassName('t m0 x12 h11 y1b2 ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
-        document.getElementsByClassName('t m0 x12 h11 y201 ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
-        document.getElementsByClassName('t m0 x12 h11 y25a ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
+        document.getElementsByClassName('t m0 x11 h11 y14d ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
+        document.getElementsByClassName('t m0 x11 h11 y1a1 ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
+        document.getElementsByClassName('t m0 x11 h11 y1ea ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
+        document.getElementsByClassName('t m0 x11 h11 y23d ff3 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
         
         text_hash = 'autenticidade digitando o HASH '+hashcode
         
-        let rodape = document.getElementsByClassName('t m0 x6 h7 y19 ff5 fs4 fc0 sc0 ls0 ws0') //hashs rodapes
+        let rodape = document.getElementsByClassName('t m0 x5 h2 y1a ff5 fs4 fc0 sc0 ls0 ws0') //hashs rodapes
 
         for(let i =0;i<rodape.length;i++){
 
@@ -178,101 +178,101 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         //assinatura ressarce
 
         let ass1 = data_final+' Ressarce criou este documento.(E-mail:contato@ressarce.com.br, '
-        document.getElementsByClassName('t m0 x3 h13 y158 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y153 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         ass1 = data_final+' Ressarce (E-mail:@contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
-        document.getElementsByClassName('t m0 x3 h13 y15b ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y156 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         ass1 = data_final+' Ressarce (E-mail:contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
-        document.getElementsByClassName('t m0 x3 h13 y15e ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y159 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         
         //assinatura do cliente
         
         let name = pegar_nome(nome)
         
         let client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 x3 h13 y161 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y15c ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = 'visualizou este documento por meio do IP '+ip+' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 x3 h5 y162 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h5 y15d ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 x3 h13 y164 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y15f ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = 'assinou este documento por meio do IP '+ip+' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 x3 h5 y165 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h5 y160 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         
         //assinatura so do cliente
         
         client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 x3 h13 y1ba ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y1a9 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = 'visualizou este documento por meio do IP '+ip+' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 x3 h5 y1bb ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h5 y1aa ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 x3 h13 y1bd ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y1ac ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
 
         client = 'assinou este documento por meio do IP '+ip+' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 x3 h5 y1be ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h5 y1ad ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         //segunda assinatura so do cliente
         
         client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 x3 h13 y209 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y1f2 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = 'visualizou este documento por meio do IP '+ip+' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 x3 h5 y20a ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h5 y1f3 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 x3 h13 y20c ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y1f5 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         client = 'assinou este documento por meio do IP '+ip+' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 x3 h5 y20d ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h5 y1f6 ff3 fs1 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
         
         
         //assinatura RESSARCE
         
         ass1 = data_final+' Ressarce (E-mail:@contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
-        document.getElementsByClassName('t m0 x3 h13 y262 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y245 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         ass1 = data_final+' Ressarce (E-mail:contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
-        document.getElementsByClassName('t m0 x3 h13 y265 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
+        document.getElementsByClassName('t m0 x3 h13 y248 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
         
         //contratante
         
         let contratante = pegar_nome(nome)+'                               Assinado digitalmente por '+pegar_nome(nome)
-        document.getElementsByClassName('t m0 xa h13 y13f ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante
+        document.getElementsByClassName('t m0 x9 h13 y13a ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante
         contratante = cpf+'                               '+data_final
-        document.getElementsByClassName('t m0 xa h13 y140 ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante
+        document.getElementsByClassName('t m0 x9 h13 y13b ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante
         
         //Ressarce
         
         let contratante2 = 'Ressarce                             Assinado digitalmente por Ressarce'
-        document.getElementsByClassName('t m0 xa h13 y147 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = contratante2
+        document.getElementsByClassName('t m0 x9 h15 y142 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         contratante2 = '38.053.265/0001-20                               '+data_final
-        document.getElementsByClassName('t m0 xa h13 y148 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = contratante2
+        document.getElementsByClassName('t m0 x9 h15 y143 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
         //Contratante
         
         contratante = pegar_nome(nome)+'                               Assinado digitalmente por '+pegar_nome(nome)
-        document.getElementsByClassName('t m0 xa h13 y1a4 ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante
+        document.getElementsByClassName('t m0 x9 h13 y189 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante
         contratante = cpf+'                     '+data_final
-        document.getElementsByClassName('t m0 xa h11 y1a5 ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante
+        document.getElementsByClassName('t m0 x9 h11 y18a ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante
         
         //Contratamte
         
         contratante = pegar_nome(nome)+'                               Assinado digitalmente por '+pegar_nome(nome)
-        document.getElementsByClassName('t m0 xa h13 y1e4 ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante
+        document.getElementsByClassName('t m0 x9 h13 y1d0 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante
         contratante = cpf+'                     '+data_final
-        document.getElementsByClassName('t m0 xa h11 y1e5 ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante
+        document.getElementsByClassName('t m0 x9 h11 y1d1 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante
         
         
         
         //Ressarce
         
         contratante2 = 'Ressarce                            Assinado digitalmente por Ressarce'
-        document.getElementsByClassName('t m0 xa h13 y23a ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante2
+        document.getElementsByClassName('t m0 x9 h13 y220 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         contratante2 = '38.053.265/0001-20                             '+data_final
-        document.getElementsByClassName('t m0 xa h11 y23b ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante2
+        document.getElementsByClassName('t m0 x9 h11 y221 ff3 fs7 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
     },nome,cpf,ip,loc,hashcode,email,cidade,estado,data_final)
     
@@ -403,8 +403,6 @@ async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
 
 
     },nome_empresa,cnpj,valor1,valor2)
-
-
     await page.pdf({format:'A4',path:'relatorio.pdf'})
 
 
