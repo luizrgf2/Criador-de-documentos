@@ -246,9 +246,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         //Ressarce
         
-        let contratante2 = 'Willian Rafael                             Assinado digitalmente por Willian Rafael'
+        let contratante2 = 'Ressarce                             Assinado digitalmente por Ressarce'
         document.getElementsByClassName('t m0 xa h13 y147 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = contratante2
-        contratante2 = '068.243.889-80                               '+data_final
+        contratante2 = '38.053.265/0001-20                               '+data_final
         document.getElementsByClassName('t m0 xa h13 y148 ff3 fs4 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
         //Contratante
@@ -269,9 +269,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         //Ressarce
         
-        contratante2 = 'Willian Rafael                             Assinado digitalmente por Willian Rafael'
+        contratante2 = 'Ressarce                            Assinado digitalmente por Ressarce'
         document.getElementsByClassName('t m0 xa h13 y23a ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante2
-        contratante2 = '068.243.889-80                             '+data_final
+        contratante2 = '38.053.265/0001-20                             '+data_final
         document.getElementsByClassName('t m0 xa h11 y23b ff3 fs5 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
     },nome,cpf,ip,loc,hashcode,email,cidade,estado,data_final)
@@ -341,9 +341,9 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         
         //Ressarce
         
-        let contratante2 = 'Willian Rafael                             Assinado digitalmente por Willian Rafael'
+        let contratante2 = 'Ressarce                            Assinado digitalmente por Ressarce'
         document.getElementsByClassName('t m0 x3 h5 yf ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante2
-        contratante2 = '068.243.889-80                               '+data_final
+        contratante2 = '38.053.265/0001-20                               '+data_final
         document.getElementsByClassName('t m0 x3 h3 y10 ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante2
         
 
