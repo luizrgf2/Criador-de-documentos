@@ -332,20 +332,7 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
         document.getElementsByClassName('t m0 xb h6 y2e ff2 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
 
 
-        //contratante
-        
-        let contratante = pegar_nome(nome)+'                               Assinado digitalmente por '+pegar_nome(nome)
-        document.getElementsByClassName('t m0 x3 h5 y7 ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante
-        contratante = cpf+'                               '+data_final
-        document.getElementsByClassName('t m0 x3 h3 y8 ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante
-        
-        //Ressarce
-        
-        let contratante2 = 'Ressarce                            Assinado digitalmente por Ressarce'
-        document.getElementsByClassName('t m0 x3 h5 yf ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante2
-        contratante2 = '38.053.265/0001-20                               '+data_final
-        document.getElementsByClassName('t m0 x3 h3 y10 ff2 fs2 fc0 sc0 ls0 ws0')[0].innerText = contratante2
-        
+      
 
     },nome,email,cpf,ip,loc,hashcode,cidade,estado,data_final)
     
