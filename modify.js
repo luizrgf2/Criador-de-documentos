@@ -341,7 +341,7 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
 
 
     
-    browser.close()
+    await browser.close()
 }
 
 async function modify_html_another(cnpj,nome_empresa,numero_empresa,rua,nome,cpf,bairro,cidade,phone,estado,cep,email){
@@ -369,6 +369,8 @@ async function modify_html_another(cnpj,nome_empresa,numero_empresa,rua,nome,cpf
     },cnpj,nome_empresa,numero_empresa,rua,nome,cpf,bairro,cidade,phone,estado,cep,email)
 
     await page.pdf({path:'franquia.pdf',format:'a4'})
+
+    await browser.close()
 }
 
 async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
@@ -391,7 +393,7 @@ async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
 
     },nome_empresa,cnpj,valor1,valor2)
     await page.pdf({format:'A4',path:'relatorio.pdf'})
-
+    await browser.close()
 
 }
 
