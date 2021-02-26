@@ -71,3 +71,26 @@ junto um json com as seguintes infomaçoes:
 
     }
     retorna o pdf do relatorio
+
+![](./images/cfranqueado.png)
+
+A rota http://localhost:400/contratof, ela irá gerar o contrato, deve ir
+junto um json com as seguintes infomaçoes:
+    
+    {
+        "nome":"Nome cliente" String,
+        "cidade":"Cidade cliente" String,
+        "estado":"Estado do cliente" String,
+        "bairro": "Bairro do cliente" String,
+        "numero": Numero empresa cliente Inteiro,
+        "hashcode": "Hascode documento" String,
+        "ip":"Ip do cliente" String,
+        "local":"Local de acesso na hora da geração do documento" String,
+        "cnpj":"CNPJ empresa cliente" String,
+        "cpf":"CPF cliente" String,
+        "phone":"Número de telefone do cliente" String,
+        "rua":"Rua da empresa", String
+        "email":"Email do cliente" String,
+        "cep":"CEP onde reside essa empresa" String,
+    }
+    Isso irá retornar o documento em pdf do contrato de franqueado.
