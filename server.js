@@ -127,3 +127,40 @@ let port = 7000
 app.listen(port,'127.0.0.1',()=>{
     console.log('Conectado.... aberto na porta '+port.toString())
 })
+
+app.post('/contratof',async (req,res)=>{
+
+
+    try{
+    nome= req.body.nome
+    cidade= req.body.cidade
+    estado= req.body.estado
+    bairro= req.body.bairro
+    numero= req.body.numero
+    hashcode= req.body.hashcode
+    ip= req.body.ip
+    local= req.body.local
+    cnpj= req.body.cnpj
+    cpf= req.body.cpf
+    phone= req.body.phone
+    rua= req.body.rua
+    email= req.body.email
+    cep= req.body.cep
+
+
+    await mod.modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,ip,local,hashcode)
+
+
+    let file = fs.readFileSync('./contratofranqueado.pdf')
+    res.contentType('application/pdf')
+    res.send(file)
+    }catch(e){
+        res.status(500).send('Algum erro aconteceu!')
+    }
+
+
+
+
+
+
+})

@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer')
 const data_time = require('date-and-time')
+const fs = require('fs')
 
 
 async function start(){
@@ -397,7 +398,95 @@ async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
 
 }
 
+async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,ip,loc,hashcode){
+    
+    const now = new Date()
+    
+    let data = now.toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'})
+    let hora = now.toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour12:false})
+    
+    let data_final  = data+' '+hora.split(':')[0]+':'+hora.split(':')[1]
+    
+    let pegar_nome = nome=>{
+        
+        lista = nome.split(' ')
+        
+        if(lista.length == 1){
+            
+            return lista[0]
+        }
+        else if(lista[1].length  <=2){
+            
+            return lista[0]+' '+lista[1]+' '+lista[2]
+            
+            
+            
+            
+        }
+        return lista[0]+' '+lista[1]
+        
+    }
+    
+    const documento = fs.readFileSync('./html/contratofranqueado.html','utf-8')
+    
+    let edit_text_from_file = documento.replace('[NOME]',nome).
+    replace('[CPF]',cpf).
+    replace('[EMAIL]',email).
+    replace('[RUA]',rua).
+    replace('[PHONE]',phone).
+    replace('[NUMERO]',numero).
+    replace('[BAIRRO]',bairro).
+    replace('[CIDADE]',cidade).
+    replace('[ESTADO]',estado).
+    replace('[CEP]',cep).
+    replace('[HASHCODE]',hashcode).
+    replace('[NOME SOBRENOME]',pegar_nome(nome)).
+    replace('[DATA ATUAL]',data_final).
+    replace('[IP]',ip)
+
+
+
+    for(let i =0; i<60;i++){
+        edit_text_from_file = edit_text_from_file.
+        replace('[NOME]',nome).
+        replace('[CPF]',cpf).
+        replace('[EMAIL]',email).
+        replace('[RUA]',rua).
+        replace('[PHONE]',phone).
+        replace('[NUMERO]',numero).
+        replace('[BAIRRO]',bairro).
+        replace('[CIDADE]',cidade).
+        replace('[ESTADO]',estado).
+        replace('[CEP]',cep).
+        replace('[HASHCODE]',hashcode).
+        replace('[NOMESOBRENOME]',pegar_nome(nome)).
+        replace('[DATA]',data_final).
+        replace('[IP]',ip)
+    }
+
+
+
+
+
+    
+    fs.writeFileSync('./editedf.html',edit_text_from_file,{encoding:'utf-8'})
+    
+
+
+    let browser = await start()
+
+    let page = await browser.newPage()
+    await page.goto('file://'+__dirname+'/editedf.html')
+
+    await page.pdf({format:'a4',path:'./contratofranqueado.pdf'})
+
+    browser.close()
+    
+}
+
 //modify_html('wwadwadaw','jfflffkfj','wdawdawdwa','wdadadaw','wadawdda','wdwadwa','wdwadwad','awdawdwa','wdwadawdwa','adwadwad','wadwadwa','wadwadaw','wadwadwadwa','wadawdaw','wdwadaw','adawda','dwawa','awdawdwa','awdawdawd','4324234','wdwada','wadwadwadwa')
 
 
-module.exports = {modify_html,modify_html_another,modify_html_relatorio}
+//modify_contrato_franqueado('32423423432432432','luiz ricardo gonçaves','23432424243242','luizrgfellipe@gmail.com','34 323323-233223','Alemar rodrigues da cunha',455,'Sebastiao amorim','patos de minas','minas gerais','2344232344','2343214124214214','patos de minas','fdsfsdfsdw3rfgdsrtg4tgfdg54gfdgrrtgdrg345tfd')
+
+module.exports = {modify_html,modify_html_another,modify_html_relatorio,modify_contrato_franqueado}
