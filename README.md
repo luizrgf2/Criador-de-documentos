@@ -74,7 +74,7 @@ junto um json com as seguintes infomaçoes:
 
 ![](./images/cfranqueado.png)
 
-A rota http://localhost:400/contratof, ela irá gerar o contrato, deve ir
+A rota http://localhost:400/contratof, ela irá gerar o contrato de franqueado, deve ir
 junto um json com as seguintes infomaçoes:
     
     {
