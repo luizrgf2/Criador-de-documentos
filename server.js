@@ -41,8 +41,8 @@ app.post('/contrato',async (req,res)=>{
         let file = fs.readFileSync('./contrato.pdf')
         res.contentType('application/pdf')
         res.send(file)
-        }catch{
-            res.status(500).send('Algum erro aconteceu!')
+        }catch(e){
+            res.status(500).send(e)
         }
 
 

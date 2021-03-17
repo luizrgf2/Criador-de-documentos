@@ -12,9 +12,29 @@ async function start(){
 }
 
 async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,porcent,estenso,porcent2,estenso2,porcent3,estenso3,numero_empresa,ip,loc,hashcode){
-
     let browser = await start()
+    
+    let page = await browser.newPage()
 
+    let pegar_nome = nome=>{ //pegar o primeiro e segundo nome
+        
+        lista = nome.split(' ')
+        
+        if(lista.length == 1){
+            
+            return lista[0]
+        }
+        else if(lista[1].length  <=2){
+            
+            return lista[0]+' '+lista[1]+' '+lista[2]
+            
+            
+            
+            
+        }
+        return lista[0]+' '+lista[1]
+        
+    }
     
     const now = new Date()
     
@@ -23,22 +43,30 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
     
     let data_final  = data+' '+hora.split(':')[0]+':'+hora.split(':')[1]
     
+    //pega o texto do html do documento do cliente
+    const paginhtml_cliente = fs.readFileSync('./html/docbase.html',{encoding: 'utf8'}) //pagndo o texto do documento html documento do cliente
+
+    //modifica os dados do texto do html
+    var texto_final = paginhtml_cliente.replace('[NOMEEMPRESA]',nome_empresa).replace('[CNPJ]',cnpj).replace('[NOME]',nome).replace('[CPF]',cpf).replace('[EMAIL]',email).replace('[PHONE]',phone).replace('[RUA]',rua).replace('[NUMERO]',numero).replace('[BAIRRO]',bairro).replace('[CIDADE]',cidade).replace('[ESTADO]',estado).replace('[CEP]',cep).replace('[DATA]',data_final).replace('[HASHCODE]',hashcode).replace('[IP]',ip).replace('[NOMESOBRENOME]',pegar_nome(nome)).replace('[NUM1]',porcent).replace('[NUM2]',porcent2).replace('[NUM3]',porcent3)
     
+    for(let i =0; i<50;i++){ //modifica todos os dados
 
+        var texto_final = texto_final.replace('[NOMEEMPRESA]',nome_empresa).replace('[CNPJ]',cnpj).replace('[NOME]',nome).replace('[CPF]',cpf).replace('[EMAIL]',email).replace('[PHONE]',phone).replace('[RUA]',rua).replace('[NUMERO]',numero).replace('[BAIRRO]',bairro).replace('[CIDADE]',cidade).replace('[ESTADO]',estado).replace('[CEP]',cep).replace('[DATA]',data_final).replace('[HASHCODE]',hashcode).replace('[IP]',ip).replace('[NOMESOBRENOME]',pegar_nome(nome)).replace('[NUM1]',porcent).replace('[NUM2]',porcent2).replace('[NUM3]',porcent3)
+        
+    }
 
+    fs.writeFileSync('./edited.html',texto_final,{encoding: 'utf8'});
 
 
     
+    await page.goto('file://'+__dirname+'/edited.html')
+    
+    
+    await page.pdf({ path: './contrato.pdf', format: 'A4' });
+    console.log('adwa')
+    
+    await page.waitForTimeout(2000)
 
-
-
-    
-    let page = await browser.newPage()
-    await page.goto('file://'+__dirname+'/html/docbase.html')
-    
-    
-    await page.pdf({ path: 'contrato.pdf', format: 'A4' });
-    
     await page.goto('file://'+__dirname+'/html/Doccliente.html')
 
     await page.evaluate((nome,email,cpf,ip,local,hashcode,cidade,estado,data_final)=>{
@@ -99,8 +127,6 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
     
     
     await page.pdf({path:'./pdfs/'+hashcode+'.pdf',format:'a4'})
-
-
     
     await browser.close()
 }
