@@ -155,7 +155,7 @@ app.post('/contratof',async (req,res)=>{
     res.contentType('application/pdf')
     res.send(file)
     }catch(e){
-        res.status(500).send('Algum erro aconteceu!')
+        res.status(500).send(e)
     }
 
 

@@ -295,6 +295,8 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
         replace('[ESTADO]',estado)
     }
     
+    await page.pdf({format:'a4',path:'./contratofranqueado.pdf'})
+
     
     fs.writeFileSync('./editedf.html',edited_text_from_clientefranqueado,{encoding:'utf-8'})
     
