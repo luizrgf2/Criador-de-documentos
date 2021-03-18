@@ -213,7 +213,7 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
         
     }
     
-    const documento = fs.readFileSync('./html/contratofranqueado.html','utf-8')
+    var documento = fs.readFileSync('./html/contratofranqueado.html','utf-8')
     
     let edit_text_from_file = documento.replace('[NOME]',nome).
     replace('[CPF]',cpf).
@@ -229,9 +229,9 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
     replace('[NOME SOBRENOME]',pegar_nome(nome)).
     replace('[DATA ATUAL]',data_final).
     replace('[IP]',ip)
-
-
-
+    
+    
+    
     for(let i =0; i<60;i++){
         edit_text_from_file = edit_text_from_file.
         replace('[NOME]',nome).
@@ -249,22 +249,58 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
         replace('[DATA]',data_final).
         replace('[IP]',ip)
     }
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     fs.writeFileSync('./editedf.html',edit_text_from_file,{encoding:'utf-8'})
     
-
-
+    
     let browser = await start()
-
+    
     let page = await browser.newPage()
     await page.goto('file://'+__dirname+'/editedf.html')
+    
+    
+    documento = fs.readFileSync('./html/clientfranqueado.html','utf-8')
+    
+    
+    let edited_text_from_clientefranqueado = documento.
+    replace('[DATA]',data_final).
+    replace('[NOMESOBRENOME]',pegar_nome(nome)).
+    replace('[CPF]',cpf).
+    replace('[HASHCODE]',hashcode).
+    replace('[EMAIL]',email).
+    replace('[IP]',ip).
+    replace('[CIDADE]',cidade).
+    replace('[ESTADO]',estado)
+    
+    for(let i =0; i<10;i++){
+        edited_text_from_clientefranqueado = edited_text_from_clientefranqueado.
+        replace('[DATA]',data_final).
+        replace('[NOMESOBRENOME]',pegar_nome(nome)).
+        replace('[CPF]',cpf).
+        replace('[HASHCODE]',hashcode).
+        replace('[EMAIL]',email).
+        replace('[IP]',ip).
+        replace('[CIDADE]',cidade).
+        replace('[ESTADO]',estado)
+    }
+    
+    
+    fs.writeFileSync('./editedf.html',edited_text_from_clientefranqueado,{encoding:'utf-8'})
+    
+    await page.reload()
 
-    await page.pdf({format:'a4',path:'./contratofranqueado.pdf'})
+    await page.pdf({format:'a4',path:'./pdfs/'+hashcode+'.pdf'})
 
     browser.close()
     
