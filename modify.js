@@ -174,7 +174,7 @@ async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
         document.getElementsByClassName('t m0 xb h4 y29 ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = nome_empresa
         cnpj_text = 'CNPJ '+cnpj
         document.getElementsByClassName('t m0 xb h4 y2b ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = cnpj_text
-        text_values = 'Aproximadamente R$ '+valor_inicio+' mil reais a R$ '+valor_final+' mil reais'
+        text_values = 'Aproximadamente R$ '+valor_inicio+' a R$ '+valor_final
         document.getElementsByClassName('t m0 x11 h6 y2f ff2 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = text_values
 
 
