@@ -171,11 +171,11 @@ async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
     await page.evaluate( (nome_empresa,cnpj,valor_inicio,valor_final)=>
     {
 
-        document.getElementsByClassName('t m0 xb h4 y29 ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = nome_empresa
+        document.getElementsByClassName('t m0 xb h4 y29 ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = nome_empresa // mdoficando o campo de texto do nome empresa
         cnpj_text = 'CNPJ '+cnpj
-        document.getElementsByClassName('t m0 xb h4 y2b ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = cnpj_text
+        document.getElementsByClassName('t m0 xb h4 y2b ff3 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = cnpj_text // modificando campo de cnpj
         text_values = 'Aproximadamente R$ '+valor_inicio+' a R$ '+valor_final
-        document.getElementsByClassName('t m0 x11 h6 y2f ff2 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = text_values
+        document.getElementsByClassName('t m0 x11 h6 y2f ff2 fs2 fc0 sc0 ls0 ws0')[0].innerHTML = text_values // modificando os valores do relátorio
 
 
     },nome_empresa,cnpj,valor1,valor2)
@@ -185,7 +185,7 @@ async function modify_html_relatorio(nome_empresa,cnpj,valor1,valor2){
 }
 
 async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,ip,loc,hashcode){
-    
+    // data atual
     const now = new Date()
     
     let data = now.toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'})
@@ -193,7 +193,10 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
     
     let data_final  = data+' '+hora.split(':')[0]+':'+hora.split(':')[1]
     
-    let pegar_nome = nome=>{
+
+    
+
+    let pegar_nome = nome=>{ // extrair nome e sobrenome do nome completo
         
         lista = nome.split(' ')
         
@@ -213,8 +216,11 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
         
     }
     
-    var documento = fs.readFileSync('./html/contratofranqueado.html','utf-8')
+    var documento = fs.readFileSync('./html/contratofranqueado.html','utf-8') // pegar texto do documento html
     
+
+    // editando os campos do texto do html extraido
+
     let edit_text_from_file = documento.replace('[NOME]',nome).
     replace('[CPF]',cpf).
     replace('[EMAIL]',email).
@@ -261,7 +267,7 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
     
     
     
-    fs.writeFileSync('./editedf.html',edit_text_from_file,{encoding:'utf-8'})
+    fs.writeFileSync('./editedf.html',edit_text_from_file,{encoding:'utf-8'}) // escrevendo documento editado no html
     
     
     let browser = await start()
@@ -270,8 +276,10 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
     await page.goto('file://'+__dirname+'/editedf.html')
     
     
-    documento = fs.readFileSync('./html/clientfranqueado.html','utf-8')
+    documento = fs.readFileSync('./html/clientfranqueado.html','utf-8') // pegando texto do html de assinatura para o cliente
     
+
+    // editando o texto do documento extraido
     
     let edited_text_from_clientefranqueado = documento.
     replace('[DATA]',data_final).
@@ -295,14 +303,14 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
         replace('[ESTADO]',estado)
     }
     
-    await page.pdf({format:'a4',path:'./contratofranqueado.pdf'})
+    await page.pdf({format:'a4',path:'./contratofranqueado.pdf'}) // gerando pdf do documento final já assinado pelo franqueado
 
     
-    fs.writeFileSync('./editedf.html',edited_text_from_clientefranqueado,{encoding:'utf-8'})
+    fs.writeFileSync('./editedf.html',edited_text_from_clientefranqueado,{encoding:'utf-8'}) // escrevendo no html o texto editado das assinaturas do franqueado
     
     await page.reload()
 
-    await page.pdf({format:'a4',path:'./pdfs/'+hashcode+'.pdf'})
+    await page.pdf({format:'a4',path:'./pdfs/'+hashcode+'.pdf'}) // gerando o documento de assinaturas do franqueado
 
     browser.close()
     
