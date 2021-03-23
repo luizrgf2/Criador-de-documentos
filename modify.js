@@ -63,67 +63,42 @@ async function modify_html(nome_empresa,cnpj,nome,cpf,email,phone,rua,numero,bai
     
     
     await page.pdf({ path: './contrato.pdf', format: 'A4' });
-    console.log('adwa')
+
+
+    documento = fs.readFileSync('./html/clientcontrato.html','utf-8') // pegando texto do html de assinatura para o cliente
     
-    await page.waitForTimeout(2000)
+
+    // editando o texto do documento extraido
+    
+    let edited_text_from_clientefranqueado = documento.
+    replace('[DATA]',data_final).
+    replace('[NOMESOBRENOME]',pegar_nome(nome)).
+    replace('[CPF]',cpf).
+    replace('[HASHCODE]',hashcode).
+    replace('[EMAIL]',email).
+    replace('[IP]',ip).
+    replace('[CIDADE]',cidade).
+    replace('[ESTADO]',estado)
+    
+    for(let i =0; i<10;i++){
+        edited_text_from_clientefranqueado = edited_text_from_clientefranqueado.
+        replace('[DATA]',data_final).
+        replace('[NOMESOBRENOME]',pegar_nome(nome)).
+        replace('[CPF]',cpf).
+        replace('[HASHCODE]',hashcode).
+        replace('[EMAIL]',email).
+        replace('[IP]',ip).
+        replace('[CIDADE]',cidade).
+        replace('[ESTADO]',estado)
+    }
+    
+
+    
+    fs.writeFileSync('./html/Doccliente.html',edited_text_from_clientefranqueado,{encoding:'utf-8'}) // escrevendo no html o texto editado das assinaturas do franqueado
+
 
     await page.goto('file://'+__dirname+'/html/Doccliente.html')
 
-    await page.evaluate((nome,email,cpf,ip,local,hashcode,cidade,estado,data_final)=>{
-        
-        let pegar_nome = nome=>{
-            
-            lista = nome.split(' ')
-            
-            if(lista.length == 1){
-                
-                return lista[0]
-            }
-            else if(lista[1].length  <=2){
-                
-                return lista[0]+' '+lista[1]+' '+lista[2]
-                
-                
-                
-                
-            }
-            return lista[0]+' '+lista[1]
-            
-        }
-        
-        
-    
-        let hashfinal = ' '.repeat(hashcode.length-2)+hashcode
-        document.getElementsByClassName('t m0 xa h3 y1a ff2 fs0 fc0 sc0 ls0 ws0')[0].innerText = hashfinal //hashcode
-
-
-        let ass1 = data_final+' Ressarce criou este documento.(E-mail:contato@ressarce.com.br, '
-        document.getElementsByClassName('t m0 xb h6 y20 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Ressarce (E-mail:@contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
-        document.getElementsByClassName('t m0 xb h6 y23 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-        ass1 = data_final+' Ressarce (E-mail:contato@ressarce.com.br,CNPJ : 38.053.265/0001-20) '
-        document.getElementsByClassName('t m0 xb h6 y27 ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = ass1 //modificar a data do doc
-
-        //assinatura do cliente
-
-        let name = pegar_nome(nome)
-        
-        client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 xb h6 y2a ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
-
-        client = 'visualizou este documento por meio do IP {ip} localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 xb h6 y2b ff2 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
-
-        client = data_final+' '+name+' (E-mail:'+email+',CPF : '+cpf+')'
-        document.getElementsByClassName('t m0 xb h6 y2d ff4 fs2 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
-
-        client = 'assinou este documento por meio do IP '+ip+ ' localizado em '+cidade+' - '+estado+' - Brazil'
-        document.getElementsByClassName('t m0 xb h6 y2e ff2 fs4 fc0 sc0 ls0 ws0')[0].innerText = client //modificar a data do doc
-
-
-      
-
-    },nome,email,cpf,ip,loc,hashcode,cidade,estado,data_final)
     
     
     await page.pdf({path:'./pdfs/'+hashcode+'.pdf',format:'a4'})
