@@ -1,12 +1,17 @@
 const express = require('express')
 const mod = require('./modify')
 const app = express()
-const bodyParser = require('body-parser')
 const fs = require('fs')
 
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
+let port = 7000
+
+app.listen(port,'127.0.0.1',()=>{
+    console.log('Conectado.... aberto na porta '+port.toString())
+})
 
 app.post('/contrato',async (req,res)=>{
 
@@ -51,6 +56,7 @@ app.post('/contrato',async (req,res)=>{
     
 
 })
+
 app.post('/franquia',async (req,res)=>{
 
 
@@ -86,6 +92,7 @@ app.post('/franquia',async (req,res)=>{
     
 
 })
+
 app.get(`/docclient/:hashcode`,(req,res)=>{
 
 
@@ -99,6 +106,7 @@ app.get(`/docclient/:hashcode`,(req,res)=>{
     }
 
 })
+
 app.post('/relatorio',async (req,res)=>{
 
 
@@ -121,11 +129,6 @@ app.post('/relatorio',async (req,res)=>{
 
 
 
-})
-let port = 7000
-
-app.listen(port,'127.0.0.1',()=>{
-    console.log('Conectado.... aberto na porta '+port.toString())
 })
 
 app.post('/contratof',async (req,res)=>{
@@ -164,3 +167,41 @@ app.post('/contratof',async (req,res)=>{
 
 
 })
+
+app.post('/contratop',async (req,res)=>{
+
+
+    try{
+    const nome= req.body.nome
+    const cidade= req.body.cidade
+    const estado= req.body.estado
+    const bairro= req.body.bairro
+    const numero= req.body.numero
+    const hashcode= req.body.hashcode
+    const ip= req.body.ip
+    const cpf= req.body.cpf
+    const phone= req.body.phone
+    const rua= req.body.rua
+    const email= req.body.email
+    const cep= req.body.cep
+    const porcent= req.body.porcent
+    const gerardocclient = req.body.doc
+
+
+    await mod.modify_contrato_parceiro(nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,ip,hashcode,porcent,gerardocclient)
+
+
+    let file = fs.readFileSync('./parceirofranqueado.pdf')
+    res.contentType('application/pdf')
+    res.send(file)
+    }catch(e){
+        res.status(500).send(e)
+    }
+
+
+
+
+
+
+})
+

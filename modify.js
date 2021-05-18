@@ -291,9 +291,146 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
     
 }
 
+async function modify_contrato_parceiro(nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,ip,hashcode,porcent,gerarDocCLient){
+
+        // data atual
+        const now = new Date()
+    
+        let data = now.toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'})
+        let hora = now.toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour12:false})
+        
+        let data_final  = data+' '+hora.split(':')[0]+':'+hora.split(':')[1]
+        
+    
+        
+        //pegar nom e sobrenome
+        let pegar_nome = nome=>{ // extrair nome e sobrenome do nome completo
+            
+            lista = nome.split(' ')
+            
+            if(lista.length == 1){
+                
+                return lista[0]
+            }
+            else if(lista[1].length  <=2){
+                
+                return lista[0]+' '+lista[1]+' '+lista[2]
+                
+                
+                
+                
+            }
+            return lista[0]+' '+lista[1]
+            
+        }
+        
+        //lendo o doc html do parceiro
+        var documento = fs.readFileSync('./html/parceirofranqueado.html','utf-8') // pegar texto do documento html
+        
+    
+        // editando os campos do texto do html extraido
+    
+        let edit_text_from_file = documento.replace('[NOME]',nome).
+        replace('[CPF]',cpf).
+        replace('[EMAIL]',email).
+        replace('[RUA]',rua).
+        replace('[PHONE]',phone).
+        replace('[NUMERO]',numero).
+        replace('[BAIRRO]',bairro).
+        replace('[CIDADE]',cidade).
+        replace('[ESTADO]',estado).
+        replace('[CEP]',cep).
+        replace('[HASHCODE]',hashcode).
+        replace('[NOME SOBRENOME]',pegar_nome(nome)).
+        replace('[DATA ATUAL]',data_final).
+        replace('[IP]',ip)
+        
+        
+        
+        for(let i =0; i<60;i++){
+            edit_text_from_file = edit_text_from_file.
+            replace('[NOME]',nome).
+            replace('[CPF]',cpf).
+            replace('[EMAIL]',email).
+            replace('[RUA]',rua).
+            replace('[PHONE]',phone).
+            replace('[NUMERO]',numero).
+            replace('[BAIRRO]',bairro).
+            replace('[CIDADE]',cidade).
+            replace('[ESTADO]',estado).
+            replace('[CEP]',cep).
+            replace('[HASHCODE]',hashcode).
+            replace('[NOMESOBRENOME]',pegar_nome(nome)).
+            replace('[DATA]',data_final).
+            replace('[IP]',ip).
+            replace('[PORCENTO]',porcent)
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //escrevendo texto modificado do html
+        
+        fs.writeFileSync('./editedf.html',edit_text_from_file,{encoding:'utf-8'}) // escrevendo documento editado no html
+        
+        //abrindo html modificado no navegador para salvar em pdf
+        let browser = await start()
+        
+        let page = await browser.newPage()
+        await page.goto('file://'+__dirname+'/editedf.html')
+        
+        await page.pdf({format:'a4',path:'./parceirofranqueado.pdf'}) // gerando pdf do documento final já assinado pelo franqueado
+        
+        //abrindo texto do documento para cleinte final
+        
+        documento = fs.readFileSync('./html/clientfranqueado.html','utf-8') // pegando texto do html de assinatura para o cliente
+        
+    
+        // editando o texto do documento extraido
+        
+        let edited_text_from_clientefranqueado = documento.
+        replace('[DATA]',data_final).
+        replace('[NOMESOBRENOME]',pegar_nome(nome)).
+        replace('[CPF]',cpf).
+        replace('[HASHCODE]',hashcode).
+        replace('[EMAIL]',email).
+        replace('[IP]',ip).
+        replace('[CIDADE]',cidade).
+        replace('[ESTADO]',estado)
+        
+        for(let i =0; i<10;i++){
+            edited_text_from_clientefranqueado = edited_text_from_clientefranqueado.
+            replace('[DATA]',data_final).
+            replace('[NOMESOBRENOME]',pegar_nome(nome)).
+            replace('[CPF]',cpf).
+            replace('[HASHCODE]',hashcode).
+            replace('[EMAIL]',email).
+            replace('[IP]',ip).
+            replace('[CIDADE]',cidade).
+            replace('[ESTADO]',estado)
+        }
+        
+        if(gerarDocCLient == true){
+
+            fs.writeFileSync('./editedf.html',edited_text_from_clientefranqueado,{encoding:'utf-8'}) // escrevendo no html o texto editado das assinaturas do franqueado
+            
+            await page.reload()
+        
+            await page.pdf({format:'a4',path:'./pdfs/'+hashcode+'.pdf'}) // gerando o documento de assinaturas do franqueado
+        
+        }
+        
+        browser.close()
+}
+
 //modify_html('wwadwadaw','jfflffkfj','wdawdawdwa','wdadadaw','wadawdda','wdwadwa','wdwadwad','awdawdwa','wdwadawdwa','adwadwad','wadwadwa','wadwadaw','wadwadwadwa','wadawdaw','wdwadaw','adawda','dwawa','awdawdwa','awdawdawd','4324234','wdwada','wadwadwadwa')
 
 
-//modify_contrato_franqueado('32423423432432432','luiz ricardo gonçaves','23432424243242','luizrgfellipe@gmail.com','34 323323-233223','Alemar rodrigues da cunha',455,'Sebastiao amorim','patos de minas','minas gerais','2344232344','2343214124214214','patos de minas','fdsfsdfsdw3rfgdsrtg4tgfdg54gfdgrrtgdrg345tfd')
 
-module.exports = {modify_html,modify_html_another,modify_html_relatorio,modify_contrato_franqueado}
+module.exports = {modify_html,modify_html_another,modify_html_relatorio,modify_contrato_franqueado,modify_contrato_parceiro}

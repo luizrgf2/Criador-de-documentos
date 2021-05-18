@@ -3,7 +3,7 @@ Criador de documentos.
 
 ![](./images/Sem%20título.png)
 
-A rota http://localhost:400/contrato, ela irá gerar o contrato, deve ir
+A rota http://localhost:7000/contrato, ela irá gerar o contrato, deve ir
 junto um json com as seguintes infomaçoes:
     
     {
@@ -33,7 +33,7 @@ junto um json com as seguintes infomaçoes:
 
 ![](./images/Sem%20tw.jpg)
 
-A rota http://localhost:400/contrato, ela irá gerar o contrato, deve ir
+A rota http://localhost:7000/contrato, ela irá gerar o contrato, deve ir
 junto um json com as seguintes infomaçoes:
     
     {
@@ -52,7 +52,7 @@ junto um json com as seguintes infomaçoes:
     Isso irá retornar o documento em pdf da franquia.
 
 ![](./images/get.png) \
-A rota http://localhost:400/docclient/"hashcode do documento"\
+A rota http://localhost:7000/docclient/"hashcode do documento"\
 Basta apenas passar junto da url o hash do documento que irá retornar
 apenas um documento pdf com as assinaturas para o cliente.
 
@@ -74,7 +74,7 @@ junto um json com as seguintes infomaçoes:
 
 ![](./images/cfranqueado.png)
 
-A rota http://localhost:400/contratof, ela irá gerar o contrato de franqueado, deve ir
+A rota http://localhost:7000/contratof, ela irá gerar o contrato de franqueado, deve ir
 junto um json com as seguintes infomaçoes:
     
     {
@@ -94,3 +94,26 @@ junto um json com as seguintes infomaçoes:
         "cep":"CEP onde reside essa empresa" String,
     }
     Isso irá retornar o documento em pdf do contrato de franqueado.
+
+![](./images/contratop.png)
+
+A rota http://localhost:7000/contratop, ela irá gerar o contrato de franqueado, deve ir
+junto um json com as seguintes infomaçoes:
+    
+    {
+        "nome":"Nome cliente" String,
+        "cidade":"Cidade cliente" String,
+        "estado":"Estado do cliente" String,
+        "bairro": "Bairro do cliente" String,
+        "numero": Numero empresa cliente Inteiro,
+        "hashcode": "Hascode documento" String,
+        "ip":"Ip do cliente" String,
+        "cpf":"CPF cliente" String,
+        "phone":"Número de telefone do cliente" String,
+        "rua":"Rua da empresa", String
+        "email":"Email do cliente" String,
+        "cep":"CEP onde reside essa empresa" String,
+        "porcent":"Porcentagem de ganho do parceiro" String,
+        "doc":true => Esse campo é responsável por gerar o documento do cliente que acessado pela rota /docclient, caso seja false esse documento não será gerado junto do contrato do parceiro.
+    }
+    Isso irá retornar o documento em pdf do contrato de franqueado parceiro.
