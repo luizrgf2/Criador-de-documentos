@@ -106,6 +106,19 @@ app.get(`/docclient/:hashcode`,(req,res)=>{
     }
 
 })
+app.get(`/docfranq/:hashcode`,(req,res)=>{
+
+
+    try{
+        let file = fs.readFileSync('./pdfsf/'+req.params.hashcode+'.pdf')
+        res.contentType('application/pdf')
+        res.send(file)
+
+    }catch{
+        res.status(500).send('Algum erro aconteceu!')
+    }
+
+})
 
 app.post('/relatorio',async (req,res)=>{
 
@@ -187,7 +200,7 @@ app.post('/contratop',async (req,res)=>{
     const porcent= req.body.porcent
     const gerardocclient = req.body.doc
 
-
+    console.log('fw')
     await mod.modify_contrato_parceiro(nome,cpf,email,phone,rua,numero,bairro,cidade,estado,cep,ip,hashcode,porcent,gerardocclient)
 
 

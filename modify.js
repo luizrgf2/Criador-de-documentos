@@ -285,7 +285,7 @@ async function modify_contrato_franqueado(cnpj,nome,cpf,email,phone,rua,numero,b
     
     await page.reload()
 
-    await page.pdf({format:'a4',path:'./pdfs/'+hashcode+'.pdf'}) // gerando o documento de assinaturas do franqueado
+    await page.pdf({format:'a4',path:'./pdfsf/'+hashcode+'.pdf'}) // gerando o documento de assinaturas do franqueado
 
     browser.close()
     
@@ -422,14 +422,14 @@ async function modify_contrato_parceiro(nome,cpf,email,phone,rua,numero,bairro,c
             
             await page.reload()
         
-            await page.pdf({format:'a4',path:'./pdfs/'+hashcode+'.pdf'}) // gerando o documento de assinaturas do franqueado
+            await page.pdf({format:'a4',path:'./pdfsf/'+hashcode+'.pdf'}) // gerando o documento de assinaturas do franqueado
         
         }
         
         browser.close()
 }
 
-//modify_html('wwadwadaw','jfflffkfj','wdawdawdwa','wdadadaw','wadawdda','wdwadwa','wdwadwad','awdawdwa','wdwadawdwa','adwadwad','wadwadwa','wadwadaw','wadwadwadwa','wadawdaw','wdwadaw','adawda','dwawa','awdawdwa','awdawdawd','4324234','wdwada','wadwadwadwa')
+//modify_contrato_parceiro('wwadwadaw','jfflffkfj','wdawdawdwa','wdadadaw','wadawdda','wdwadwa','wdwadwad','awdawdwa','wdwadawdwa','adwadwad','wadwadwa','wadwadaw','wadwadwadwa','wadawdaw','wdwadaw','adawda','dwawa','awdawdwa','awdawdawd','4324234','wdwada','wadwadwadwa')
 
 
 
