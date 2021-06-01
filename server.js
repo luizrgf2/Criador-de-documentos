@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended:false}))
 
 let port = 7000
 
-app.listen(port,'127.0.0.1',()=>{
+app.listen(port,()=>{
     console.log('Conectado.... aberto na porta '+port.toString())
 })
 
