@@ -2,10 +2,13 @@ const express = require('express')
 const mod = require('./modify')
 const app = express()
 const fs = require('fs')
+const cors = require("cors")
+
 
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
+app.use(cors())
 
 let port = 7000
 
@@ -44,6 +47,17 @@ app.post('/contrato',async (req,res)=>{
 
 
         let file = fs.readFileSync('./contrato.pdf')
+
+        //verificar se pasta existe,caso não sera criada
+        if(!fs.existsSync('./contratosPdf')){
+
+            fs.mkdirSync('./contratosPdf')
+
+        }
+
+        //savando pdf
+        fs.writeFileSync('./contratosPdf/'+hashcode+".pdf",file,{encoding:"binary"})
+
         res.contentType('application/pdf')
         res.send(file)
         }catch(e){
@@ -51,7 +65,7 @@ app.post('/contrato',async (req,res)=>{
         }
 
 
-
+        
 
     
 
@@ -106,6 +120,7 @@ app.get(`/docclient/:hashcode`,(req,res)=>{
     }
 
 })
+
 app.get(`/docfranq/:hashcode`,(req,res)=>{
 
 
@@ -168,6 +183,19 @@ app.post('/contratof',async (req,res)=>{
 
 
     let file = fs.readFileSync('./contratofranqueado.pdf')
+
+    //verificar se pasta existe,caso não sera criada
+    if(!fs.existsSync('./contratosPdf')){
+
+        fs.mkdirSync('./contratosPdf')
+
+    }
+
+    //savando pdf
+    fs.writeFileSync('./contratosPdf/'+hashcode+".pdf",file,{encoding:"binary"})
+
+
+
     res.contentType('application/pdf')
     res.send(file)
     }catch(e){
@@ -205,6 +233,17 @@ app.post('/contratop',async (req,res)=>{
 
 
     let file = fs.readFileSync('./parceirofranqueado.pdf')
+
+    //verificar se pasta existe,caso não sera criada
+    if(!fs.existsSync('./contratosPdf')){
+
+        fs.mkdirSync('./contratosPdf')
+
+    }
+
+    //savando pdf
+    fs.writeFileSync('./contratosPdf/'+hashcode+".pdf",file,{encoding:"binary"})
+
     res.contentType('application/pdf')
     res.send(file)
     }catch(e){
@@ -215,6 +254,22 @@ app.post('/contratop',async (req,res)=>{
 
 
 
+
+})
+
+app.get('/contratos/:hash',(req,res)=>{
+
+    try{
+
+        const path = './contratosPdf/'+req.params.hash+'.pdf'
+        console.log(path)
+        let file = fs.readFileSync(path)
+        res.contentType('application/pdf')
+        res.send(file)
+
+    }catch{
+        res.status(500).send('não existe esse contrato!')
+    }
 
 })
 
