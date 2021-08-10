@@ -16,6 +16,25 @@ app.listen(port,()=>{
     console.log('Conectado.... aberto na porta '+port.toString())
 })
 
+
+function createPdf(file){
+
+    //verificar se pasta existe,caso não sera criada
+    if(!fs.existsSync('./contratosPdf')){
+
+        fs.mkdirSync('./contratosPdf')
+
+    }
+
+    const data = new Date().toLocaleDateString('pt-br').split('/').join('-')
+    const hora = new Date().toLocaleTimeString('pt-br').split(':').join('')
+
+
+    fs.writeFileSync('./contratosPdf/'+`${data}_${hora}.pdf`,file,{encoding:"binary"})
+
+
+}
+
 app.post('/contrato',async (req,res)=>{
 
 
@@ -48,15 +67,10 @@ app.post('/contrato',async (req,res)=>{
 
         let file = fs.readFileSync('./contrato.pdf')
 
-        //verificar se pasta existe,caso não sera criada
-        if(!fs.existsSync('./contratosPdf')){
-
-            fs.mkdirSync('./contratosPdf')
-
-        }
+        
 
         //savando pdf
-        fs.writeFileSync('./contratosPdf/'+hashcode+".pdf",file,{encoding:"binary"})
+        createPdf(file)
 
         res.contentType('application/pdf')
         res.send(file)
@@ -184,15 +198,10 @@ app.post('/contratof',async (req,res)=>{
 
     let file = fs.readFileSync('./contratofranqueado.pdf')
 
-    //verificar se pasta existe,caso não sera criada
-    if(!fs.existsSync('./contratosPdf')){
 
-        fs.mkdirSync('./contratosPdf')
-
-    }
 
     //savando pdf
-    fs.writeFileSync('./contratosPdf/'+hashcode+".pdf",file,{encoding:"binary"})
+    createPdf(file)
 
 
 
@@ -234,15 +243,10 @@ app.post('/contratop',async (req,res)=>{
 
     let file = fs.readFileSync('./parceirofranqueado.pdf')
 
-    //verificar se pasta existe,caso não sera criada
-    if(!fs.existsSync('./contratosPdf')){
 
-        fs.mkdirSync('./contratosPdf')
-
-    }
 
     //savando pdf
-    fs.writeFileSync('./contratosPdf/'+hashcode+".pdf",file,{encoding:"binary"})
+    createPdf(file)
 
     res.contentType('application/pdf')
     res.send(file)
@@ -257,19 +261,39 @@ app.post('/contratop',async (req,res)=>{
 
 })
 
-app.get('/contratos/:hash',(req,res)=>{
+app.get('/contratos/:doc',(req,res)=>{
+
+
+
+    const doc = req.params.doc
 
     try{
 
-        const path = './contratosPdf/'+req.params.hash+'.pdf'
-        console.log(path)
+        const path = './contratosPdf/'+`${doc}.pdf`
         let file = fs.readFileSync(path)
         res.contentType('application/pdf')
         res.send(file)
 
-    }catch{
+    }catch(e){
         res.status(500).send('não existe esse contrato!')
     }
 
+})
+
+app.get('/links',(req,res)=>{
+
+    const dirs =  fs.readdirSync('./contratosPdf')
+
+    var links = []
+
+    dirs.forEach(link=>{
+
+        const urlFinal = `http://157.245.95.224:7000/contratos/${link.split('.pdf')[0]}`;
+
+        links.push(urlFinal)
+
+    })
+
+    res.send(links)
 })
 
