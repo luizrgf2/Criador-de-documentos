@@ -28,8 +28,8 @@ function createPdf(file){
 
     const dataBruta = new Date()
 
-    const data = new Date(dataBruta.valueOf() -180).toLocaleDateString('pt-br').split('/').join('-')
-    const hora = new Date(dataBruta.valueOf() -180).toLocaleTimeString('pt-br').split(':').join('')
+    const data = new Date(dataBruta.valueOf() -180* 60000).toLocaleDateString('pt-br').split('/').join('-')
+    const hora = new Date(dataBruta.valueOf() -180* 60000).toLocaleTimeString('pt-br').split(':').join('')
 
 
     fs.writeFileSync('./contratosPdf/'+`${data}_${hora}.pdf`,file,{encoding:"binary"})
