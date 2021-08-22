@@ -24,11 +24,20 @@ function createPdf(file){
 
         fs.mkdirSync('./contratosPdf')
 
+<<<<<<< HEAD
     }
     const dataBruta = new Date()
 
     const data = new Date(dataBruta.valueOf() - 180).toLocaleDateString('pt-br').split('/').join('-')
     const hora = new Date(dataBruta.valueOf() - 180).toLocaleTimeString('pt-br').split(':').join('')
+=======
+    }  
+
+    const dataBruta = new Date()
+
+    const data = new Date(dataBruta.valueOf() -180* 60000).toLocaleDateString('pt-br').split('/').join('-')
+    const hora = new Date(dataBruta.valueOf() -180* 60000).toLocaleTimeString('pt-br').split(':').join('')
+>>>>>>> a7cdb8ac59816b9159f56c6eb6c9efc908b93453
 
 
     fs.writeFileSync('./contratosPdf/'+`${data}_${hora}.pdf`,file,{encoding:"binary"})
